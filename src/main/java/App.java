@@ -8,6 +8,4 @@ public class App {
   public static void main(String[] args) {
     //Spark and Velocity go in here!
   }
-
-  //Programs go down here!
 }
