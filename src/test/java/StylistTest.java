@@ -28,15 +28,15 @@ public class StylistTest {
     assertEquals("Michael", Stylist.find(myStylist.getId()).getName());
   }
 
-  // @Test
-  // public void delete_deleteStylistFromDatabase() {
-  //   Stylist firstStylist = new Stylist("Nathalie");
-  //   Stylist secondStylist = new Stylist("Michael");
-  //   firstStylist.save();
-  //   secondStylist.save();
-  //   firstStylist.delete();
-  //   assertEquals(1, Stylist.all().size());
-  // }
+  @Test
+  public void delete_deleteStylistFromDatabase() {
+    Stylist firstStylist = new Stylist("Nathalie");
+    Stylist secondStylist = new Stylist("Michael");
+    firstStylist.save();
+    secondStylist.save();
+    firstStylist.delete();
+    assertEquals(1, Stylist.all().size());
+  }
 
   // @Test
   // public void getClients_returnsAllClientsWithSameStylist() {

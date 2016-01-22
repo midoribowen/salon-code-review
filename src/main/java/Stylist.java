@@ -60,13 +60,15 @@ public class Stylist {
     }
   }
 
-  // // DELETE METHOD - deletes Stylist from DB
-  // public void delete() {
-  //   try (Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // DELETE METHOD - deletes Stylist from DB
+  public void delete() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM stylists WHERE id=:id";
+      con.createQuery(sql)
+         .addParameter("id", this.mId)
+         .executeUpdate();
+    }
+  }
 
   // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
   public static Stylist find(int id) {
