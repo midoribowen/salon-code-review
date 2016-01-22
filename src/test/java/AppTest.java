@@ -1,16 +1,24 @@
 import org.fluentlenium.adapter.FluentTest;
+import static org.junit.Assert.*;
+import org.junit.*;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import static org.fluentlenium.core.filter.FilterConstructor.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AppIntegrationTest extends FluentTest {
+public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
+
+  @Override
   public WebDriver getDefaultDriver() {
     return webDriver;
   }
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
 
   @ClassRule
   public static ServerRule server = new ServerRule();
@@ -18,15 +26,9 @@ public class AppIntegrationTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("//insert page contents here for testing//");
+    assertThat(pageSource()).contains("Get a Haircut!");
   }
-    //This tests is a page contains particular contents
 
-  @Test public void testNameHere() {
-    goTo("http://localhost:4567/");
-    fill("#tag").with("userInput");
-    submit(".btn");
-    assertThat(pageSource()).contains("//userInput//");
-  }
-    //This tests if a tagged fill is outputing correctly with the user input in the right place.
+  
+
 }
