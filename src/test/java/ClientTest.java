@@ -19,14 +19,14 @@ public class ClientTest {
     assertTrue(Client.all().get(0).equals(myClient));
   }
 
-  // @Test
-  // public void update_updatesChangeOfNameInClientsDatabase() {
-  //   Client myClient = new Client("Kristen");
-  //   myClient.save();
-  //   myClient.update("Gabe");
-  //   assertEquals("Gabe", Client.find(myClient.getId()).getName());
-  // }
-  //
+  @Test
+  public void update_updatesChangeOfNameInClientsDatabase() {
+    Client myClient = new Client("Kristen");
+    myClient.save();
+    myClient.update("Gabe");
+    assertEquals("Gabe", Client.find(myClient.getId()).getName());
+  }
+  
   // @Test
   // public void delete_deletesClientFromDatabase() {
   //   Client firstClient = new Client("Kristen");

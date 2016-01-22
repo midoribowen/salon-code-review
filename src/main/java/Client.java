@@ -4,6 +4,7 @@ import java.util.List;
 public class Client {
   private int mId;
   private String mName;
+  private int mStylistId;
 
   public Client (String name) {
     this.mName = name;
@@ -50,14 +51,17 @@ public class Client {
   }
 
 
-  // // UPDATE METHOD - updates DB to change name of Client
-  // public void update(String newName) {
-  //   this.mName = newName;
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // UPDATE METHOD - updates DB to change name of Client
+  public void update(String newName) {
+    this.mName = newName;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET name = :newName WHERE id=:id";
+      con.createQuery(sql)
+         .addParameter("newName", newName)
+         .addParameter("id", this.mId)
+         .executeUpdate();
+    }
+  }
 
 
   // // DELETE METHOD - deletes Client from DB
@@ -68,13 +72,15 @@ public class Client {
   //   }
   // }
 
-  // // FIND METHOD - finds Client id in DB based on userInput member variable
-  // public static Client find(int id) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // FIND METHOD - finds Client id in DB based on userInput member variable
+  public static Client find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients WHERE id=:id";
+      return con.createQuery(sql)
+                .addParameter("id", id)
+                .executeAndFetchFirst(Client.class);
+    }
+  }
 
 
   // // referToStylist METHOD - adds a stylist id to the Client
