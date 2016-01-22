@@ -38,22 +38,22 @@ public class StylistTest {
     assertEquals(1, Stylist.all().size());
   }
 
-  // @Test
-  // public void getClients_returnsAllClientsWithSameStylist() {
-  //   Stylist myStylist = new Stylist("Nathalie");
-  //   myStylist.save();
-  //
-  //   Client firstClient = new Client("Kristen");
-  //   Client secondClient = new Client("Gabe");
-  //   firstClient.save();
-  //   secondClient.save();
-  //
-  //   firstClient.assignStylist(myStylist.getId());
-  //   secondClient.assignStylist(myStylist.getId());
-  //
-  //   Client[] clients = new Client[] {firstClient, secondClient};
-  //   assertTrue(myStylist.getClients()
-  //                       .containsAll(Arrays.asList(clients)));
-  // }
+  @Test
+  public void getClients_returnsAllClientsWithSameStylist() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+
+    Client firstClient = new Client("Kristen");
+    Client secondClient = new Client("Gabe");
+    firstClient.save();
+    secondClient.save();
+
+    firstClient.assignStylist(myStylist.getId());
+    secondClient.assignStylist(myStylist.getId());
+
+    Client[] clients = new Client[] {firstClient, secondClient};
+    assertTrue(myStylist.getClients()
+                        .containsAll(Arrays.asList(clients)));
+  }
 
 }

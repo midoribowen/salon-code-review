@@ -80,15 +80,15 @@ public class Stylist {
     }
   }
 
-  // // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
-  // public List<Client> getClients() {
-  //   String sql = "SELECT id AS mId, name AS mName FROM clients WHERE stylist_id=:id";
-  //   try (Connection con = DB.sql2o.open()) {
-  //     return con.createQuery(sql)
-  //               .addParameter("id", this.mId)
-  //               .executeAndFetch(Client.class);
-  //   }
-  // }
+  // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
+  public List<Client> getClients() {
+    String sql = "SELECT id AS mId, name AS mName FROM clients WHERE stylist_id=:id";
+    try (Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql)
+                .addParameter("id", this.mId)
+                .executeAndFetch(Client.class);
+    }
+  }
 
 
 }
