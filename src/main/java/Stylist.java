@@ -48,14 +48,17 @@ public class Stylist {
     }
   }
 
-  // // UPDATE METHOD - updates DB to change name of Stylist
-  // public void update(String newName) {
-  //   this.mName = newName;
-  //   try (Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // UPDATE METHOD - updates DB to change name of Stylist
+  public void update(String newName) {
+    this.mName = newName;
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET name = :newName WHERE id=:id";
+      con.createQuery(sql)
+         .addParameter("newName", newName)
+         .addParameter("id", this.mId)
+         .executeUpdate();
+    }
+  }
 
   // // DELETE METHOD - deletes Stylist from DB
   // public void delete() {
@@ -65,13 +68,15 @@ public class Stylist {
   //   }
   // }
 
-  // // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
-  // public static Stylist find(int id) {
-  //   try (Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
+  public static Stylist find(int id) {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id=:id";
+      return con.createQuery(sql)
+                .addParameter("id", id)
+                .executeAndFetchFirst(Stylist.class);
+    }
+  }
 
   // // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
   // public List<Client> getClients() {
