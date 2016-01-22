@@ -26,16 +26,16 @@ public class ClientTest {
     myClient.update("Gabe");
     assertEquals("Gabe", Client.find(myClient.getId()).getName());
   }
-  
-  // @Test
-  // public void delete_deletesClientFromDatabase() {
-  //   Client firstClient = new Client("Kristen");
-  //   Client secondClient = new Client("Gabe");
-  //   firstClient.save();
-  //   secondClient.save();
-  //   firstClient.delete();
-  //   assertEquals(1, Client.all().size());
-  // }
+
+  @Test
+  public void delete_deletesClientFromDatabase() {
+    Client firstClient = new Client("Kristen");
+    Client secondClient = new Client("Gabe");
+    firstClient.save();
+    secondClient.save();
+    firstClient.delete();
+    assertEquals(1, Client.all().size());
+  }
   //
   // @Test
   // public void referToStylist_assignsStylistIdToClient() {

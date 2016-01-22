@@ -64,13 +64,15 @@ public class Client {
   }
 
 
-  // // DELETE METHOD - deletes Client from DB
-  // public void delete() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
-  //   }
-  // }
+  // DELETE METHOD - deletes Client from DB
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id=:id";
+      con.createQuery(sql)
+         .addParameter("id", this.mId)
+         .executeUpdate();
+    }
+  }
 
   // FIND METHOD - finds Client id in DB based on userInput member variable
   public static Client find(int id) {
