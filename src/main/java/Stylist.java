@@ -30,8 +30,8 @@ public class Stylist {
 
   // SAVE METHOD - saves new Stylist in the DB with a primary key
   public void save() {
+    String sql = "INSERT INTO stylists(name) VALUES (:name)";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO stylists(name) VALUES (:name)";
       this.mId = (int) con.createQuery(sql, true)
           .addParameter("name", this.mName)
           .executeUpdate()
@@ -41,8 +41,8 @@ public class Stylist {
 
   // ALL METHOD - puts all Stylists into a List of Stylist Objects
   public static List<Stylist> all() {
+    String sql = "SELECT id AS mId, name AS mName FROM stylists";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT id AS mId, name AS mName FROM stylists";
       return con.createQuery(sql)
                 .executeAndFetch(Stylist.class);
     }
@@ -51,8 +51,8 @@ public class Stylist {
   // UPDATE METHOD - updates DB to change name of Stylist
   public void update(String newName) {
     this.mName = newName;
+    String sql = "UPDATE stylists SET name = :newName WHERE id=:id";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE stylists SET name = :newName WHERE id=:id";
       con.createQuery(sql)
       .addParameter("newName", newName)
       .addParameter("id", this.mId)
@@ -62,8 +62,8 @@ public class Stylist {
 
   // DELETE METHOD - deletes Stylist from DB
   public void delete() {
+    String sql = "DELETE FROM stylists WHERE id=:id";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM stylists WHERE id=:id";
       con.createQuery(sql)
          .addParameter("id", this.mId)
          .executeUpdate();
@@ -72,8 +72,8 @@ public class Stylist {
 
   // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
   public static Stylist find(int id) {
+    String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id=:id";
     try (Connection con = DB.sql2o.open()) {
-      String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id=:id";
       return con.createQuery(sql)
                 .addParameter("id", id)
                 .executeAndFetchFirst(Stylist.class);
@@ -82,9 +82,11 @@ public class Stylist {
 
   // // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
   // public List<Client> getClients() {
+  //   String sql = "SELECT id AS mId, name AS mName FROM clients WHERE stylist_id=:id";
   //   try (Connection con = DB.sql2o.open()) {
-  //     String sql = "";
-  //     con.createQuery(sql)
+  //     return con.createQuery(sql)
+  //               .addParameter("id", this.mId)
+  //               .executeAndFetch(Client.class);
   //   }
   // }
 

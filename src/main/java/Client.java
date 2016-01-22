@@ -18,6 +18,11 @@ public class Client {
     return mName;
   }
 
+  // GETSTYLISTID METHOD - getter for Client's stylist id
+  public int getStylistId() {
+    return mStylistId;
+  }
+
   @Override
   public boolean equals(Object otherClient) {
     if (!(otherClient instanceof Client)) {
@@ -31,8 +36,8 @@ public class Client {
 
   // SAVE METHOD - saves userinput Client in the DB with a primary key
   public void save() {
+    String sql = "INSERT INTO clients(name) VALUES (:name)";
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO clients(name) VALUES (:name)";
       this.mId = (int) con.createQuery(sql, true)
           .addParameter("name", this.mName)
           .executeUpdate()
@@ -43,8 +48,8 @@ public class Client {
 
   // ALL METHOD - puts all Clients into a List of Client Objects
   public static List<Client> all() {
+    String sql = "SELECT id AS mId, name AS mName FROM clients";
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT id AS mId, name AS mName FROM clients";
       return con.createQuery(sql)
                 .executeAndFetch(Client.class);
     }
@@ -54,8 +59,8 @@ public class Client {
   // UPDATE METHOD - updates DB to change name of Client
   public void update(String newName) {
     this.mName = newName;
+    String sql = "UPDATE clients SET name = :newName WHERE id=:id";
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET name = :newName WHERE id=:id";
       con.createQuery(sql)
          .addParameter("newName", newName)
          .addParameter("id", this.mId)
@@ -66,8 +71,8 @@ public class Client {
 
   // DELETE METHOD - deletes Client from DB
   public void delete() {
+    String sql = "DELETE FROM clients WHERE id=:id";
     try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM clients WHERE id=:id";
       con.createQuery(sql)
          .addParameter("id", this.mId)
          .executeUpdate();
@@ -76,8 +81,8 @@ public class Client {
 
   // FIND METHOD - finds Client id in DB based on userInput member variable
   public static Client find(int id) {
-    try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients WHERE id=:id";
+    try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
                 .addParameter("id", id)
                 .executeAndFetchFirst(Client.class);
@@ -85,23 +90,19 @@ public class Client {
   }
 
 
-  // // referToStylist METHOD - adds a stylist id to the Client
-  // public void referToStylist(int stylistId) {
+  // // assignStylist METHOD - adds a stylist id to the Client
+  // public void assignStylist(int stylistId) {
   //   mStylistId = stylistId;
+  //   String sql = "UPDATE clients SET stylist_id = :stylistId WHERE id=:id";
   //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "";
   //     con.createQuery(sql)
+  //        .addParameter("stylistId", stylistId)
+  //        .addParameter("id", this.mId)
+  //        .executeUpdate();
   //   }
   // }
 
-
-  // // GETSTYLISTID METHOD - getter for Client's stylist id
-  // public int getStylistId() {
-  //   return mStylistId;
-  // }
-
-
-  // // GETSTYLISTNAME METHOD - getter for Stylist name using Stylist.find(mStylistId).getName();
+  // // GETSTYLISTNAME METHOD - getter for Stylist name
   // public String getStylistName() {
   //   return Stylist.find(mStylistId).getName();
   // }

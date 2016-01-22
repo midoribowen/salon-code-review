@@ -48,8 +48,8 @@ public class StylistTest {
   //   firstClient.save();
   //   secondClient.save();
   //
-  //   firstClient.referToStylist(myStylist.getId());
-  //   secondClient.referToStylist(myStylist.getId());
+  //   firstClient.assignStylist(myStylist.getId());
+  //   secondClient.assignStylist(myStylist.getId());
   //
   //   Client[] clients = new Client[] {firstClient, secondClient};
   //   assertTrue(myStylist.getClients()

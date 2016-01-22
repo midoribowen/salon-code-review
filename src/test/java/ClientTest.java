@@ -36,14 +36,14 @@ public class ClientTest {
     firstClient.delete();
     assertEquals(1, Client.all().size());
   }
-  //
+
   // @Test
-  // public void referToStylist_assignsStylistIdToClient() {
+  // public void assignStylist_assignsStylistIdToClient() {
   //   Client myClient = new Client("Kristen");
   //   Stylist myStylist = new Stylist("Nathalie");
   //   myClient.save();
   //   myStylist.save();
-  //   myClient.referToStylist(myStylist.getId());
+  //   myClient.assignStylist(myStylist.getId());
   //   assertTrue(Stylist.find(myStylist.getId())
   //      .equals(Stylist.find(myClient.getStylistId())));
   // }
