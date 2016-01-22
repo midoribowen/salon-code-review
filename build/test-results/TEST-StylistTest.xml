@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="StylistTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-01-22T19:13:21" hostname="epicodus-31.local" time="0.043">
-  <properties/>
-  <testcase name="all_emptyAtFirst" classname="StylistTest" time="0.01"/>
-  <testcase name="update_updatesChangeOfNameInStylistsDatabase" classname="StylistTest" time="0.018"/>
-  <testcase name="save_savesStylistInDatabase" classname="StylistTest" time="0.014"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

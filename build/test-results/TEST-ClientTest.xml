@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ClientTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-01-22T19:13:21" hostname="epicodus-31.local" time="0.137">
-  <properties/>
-  <testcase name="save_savesClientsInDatabase" classname="ClientTest" time="0.106"/>
-  <testcase name="update_updatesChangeOfNameInClientsDatabase" classname="ClientTest" time="0.021"/>
-  <testcase name="all_emptyAtFirst" classname="ClientTest" time="0.009"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
