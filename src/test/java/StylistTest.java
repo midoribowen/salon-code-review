@@ -20,13 +20,13 @@ public class StylistTest {
     assertTrue(Stylist.all().get(0).equals(myStylist));
   }
 
-  // @Test
-  // public void update_updatesChangeOfNameInStylistsDatabase() {
-  //   Stylist myStylist = new Stylist("Nathalie");
-  //   myStylist.save();
-  //   myStylist.update("Michael");
-  //   assertEquals("Michael", Stylist.find(myStylist.getId()).getName());
-  // }
+  @Test
+  public void update_updatesChangeOfNameInStylistsDatabase() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    myStylist.update("Michael");
+    assertEquals("Michael", Stylist.find(myStylist.getId()).getName());
+  }
 
   // @Test
   // public void delete_deleteStylistFromDatabase() {
