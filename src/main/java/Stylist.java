@@ -29,22 +29,57 @@ public class Stylist {
   }
 
   // SAVE METHOD - saves new Stylist in the DB with a primary key
-
+  public void save() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO stylists(name) VALUES (:name)";
+      this.mId = (int) con.createQuery(sql, true)
+          .addParameter("name", this.mName)
+          .executeUpdate()
+          .getKey();
+    }
+  }
 
   // ALL METHOD - puts all Stylists into a List of Stylist Objects
+  public static List<Stylist> all() {
+    try (Connection con = DB.sql2o.open()) {
+      String sql = "SELECT id AS mId, name AS mName FROM stylists";
+      return con.createQuery(sql)
+                .executeAndFetch(Stylist.class);
+    }
+  }
 
+  // // UPDATE METHOD - updates DB to change name of Stylist
+  // public void update(String newName) {
+  //   this.mName = newName;
+  //   try (Connection con = DB.sql2o.open()) {
+  //     String sql = "";
+  //     con.createQuery(sql)
+  //   }
+  // }
 
-  // UPDATE METHOD - updates DB to change name of Stylist
+  // // DELETE METHOD - deletes Stylist from DB
+  // public void delete() {
+  //   try (Connection con = DB.sql2o.open()) {
+  //     String sql = "";
+  //     con.createQuery(sql)
+  //   }
+  // }
 
+  // // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
+  // public static Stylist find(int id) {
+  //   try (Connection con = DB.sql2o.open()) {
+  //     String sql = "";
+  //     con.createQuery(sql)
+  //   }
+  // }
 
-  // DELETE METHOD - deletes Stylist from DB
+  // // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
+  // public List<Client> getClients() {
+  //   try (Connection con = DB.sql2o.open()) {
+  //     String sql = "";
+  //     con.createQuery(sql)
+  //   }
+  // }
 
-
-  // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
-
-
-  // GETCLIENTS METHOD - generates a List of Client Objects that contain the same Stylist id
-
-  
 
 }
