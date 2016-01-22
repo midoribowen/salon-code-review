@@ -37,15 +37,15 @@ public class ClientTest {
     assertEquals(1, Client.all().size());
   }
 
-  // @Test
-  // public void assignStylist_assignsStylistIdToClient() {
-  //   Client myClient = new Client("Kristen");
-  //   Stylist myStylist = new Stylist("Nathalie");
-  //   myClient.save();
-  //   myStylist.save();
-  //   myClient.assignStylist(myStylist.getId());
-  //   assertTrue(Stylist.find(myStylist.getId())
-  //      .equals(Stylist.find(myClient.getStylistId())));
-  // }
+  @Test
+  public void assignStylist_assignsStylistIdToClient() {
+    Client myClient = new Client("Kristen");
+    Stylist myStylist = new Stylist("Nathalie");
+    myClient.save();
+    myStylist.save();
+    myClient.assignStylist(myStylist.getId());
+    assertTrue(Stylist.find(myStylist.getId())
+       .equals(Stylist.find(myClient.getStylistId())));
+  }
 
 }

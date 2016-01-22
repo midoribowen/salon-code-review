@@ -90,17 +90,17 @@ public class Client {
   }
 
 
-  // // assignStylist METHOD - adds a stylist id to the Client
-  // public void assignStylist(int stylistId) {
-  //   mStylistId = stylistId;
-  //   String sql = "UPDATE clients SET stylist_id = :stylistId WHERE id=:id";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     con.createQuery(sql)
-  //        .addParameter("stylistId", stylistId)
-  //        .addParameter("id", this.mId)
-  //        .executeUpdate();
-  //   }
-  // }
+  // assignStylist METHOD - adds a stylist id to the Client
+  public void assignStylist(int stylistId) {
+    mStylistId = stylistId;
+    String sql = "UPDATE clients SET stylist_id = :stylistId WHERE id=:id";
+    try(Connection con = DB.sql2o.open()) {
+      con.createQuery(sql)
+         .addParameter("stylistId", stylistId)
+         .addParameter("id", this.mId)
+         .executeUpdate();
+    }
+  }
 
   // // GETSTYLISTNAME METHOD - getter for Stylist name
   // public String getStylistName() {
