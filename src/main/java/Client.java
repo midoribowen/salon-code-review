@@ -102,9 +102,9 @@ public class Client {
     }
   }
 
-  // // GETSTYLISTNAME METHOD - getter for Stylist name
-  // public String getStylistName() {
-  //   return Stylist.find(mStylistId).getName();
-  // }
+  // GETSTYLISTNAME METHOD - getter for Stylist name
+  public String getStylistName() {
+    return Stylist.find(mStylistId).getName();
+  }
 
 }

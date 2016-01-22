@@ -70,7 +70,7 @@ public class Stylist {
     }
   }
 
-  // FIND METHOD - finds finds Stylist id in DB based on userInput member variable, executeandfetch Stylist Object
+  // FIND METHOD - finds finds Stylist id in DB based on userInput member variable
   public static Stylist find(int id) {
     String sql = "SELECT id AS mId, name AS mName FROM stylists WHERE id=:id";
     try (Connection con = DB.sql2o.open()) {

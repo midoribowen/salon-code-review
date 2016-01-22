@@ -48,4 +48,14 @@ public class ClientTest {
        .equals(Stylist.find(myClient.getStylistId())));
   }
 
+  @Test
+  public void getStylistName_matchesStylistNameWithStylistIdOfClients() {
+    Client myClient = new Client("Kristen");
+    Stylist myStylist = new Stylist("Nathalie");
+    myClient.save();
+    myStylist.save();
+    myClient.assignStylist(myStylist.getId());
+    assertEquals("Nathalie", Client.find(myClient.getId()).getStylistName());
+  }
+
 }
