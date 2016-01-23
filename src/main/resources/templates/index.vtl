@@ -1,0 +1,36 @@
+<div>
+  <h3><u>ALL STYLISTS</u></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    #foreach($stylist in $stylists)
+        <h4><a href="/stylists/$stylist.getId()">$stylist.getName()</a></h4>
+    #end
+  </div>
+
+  <div class="col-md-4">
+    <h3><u>Add A New Stylist To Our List</u></h3>
+    <form action="/new" method="post">
+      <label for="name">Stylist name (First Last, e.g. John Smith)</label>
+      <input id="name" name="name" type="text">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3><u>Remove A Stylist From Our List</u></h3>
+    <form action="/delete" method="post">
+      <label for="id">Stylist name</label>
+      <select id="id" name="id" type="text">
+        #foreach($stylist in $stylists)
+          <option value="$stylist.getId()">$stylist.getName()</option>
+        #end
+      </select>
+      <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+
+    </form>
+  </div>
+</div>

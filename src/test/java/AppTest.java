@@ -29,6 +29,22 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Get a Haircut!");
   }
 
-  
+  @Test
+  public void stylistAddedSuccessfully() {
+    goTo("http://localhost:4567/");
+    fill("#name").with("Nathalie");
+    submit(".btn-success");
+    assertThat(pageSource()).contains("Nathalie");
+  }
+
+  @Test
+  public void stylistRemoved() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    goTo("http://localhost:4567/");
+    click("option", withText("Nathalie"));
+    submit(".btn-danger");
+    assertThat(!(pageSource()).contains("Nathalie"));
+  }
 
 }
