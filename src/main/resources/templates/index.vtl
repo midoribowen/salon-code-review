@@ -1,0 +1,10 @@
+<div>
+  <h3><u>ALL STYLISTS</u></h3>
+</div>
+
+#foreach($stylist in $stylists)
+  <h4><a href="/stylists/$stylist.getId()">$stylist.getName()</a></h4>
+#end
+
+<h5><u>Is your stylist missing?</u></h5>
+<a href="/new-stylist" class="btn btn-primary">Add New Stylist Here!</a>
