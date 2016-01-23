@@ -130,6 +130,10 @@ SELECT pg_catalog.setval('clients_id_seq', 1, false);
 --
 
 COPY stylists (id, name) FROM stdin;
+1	Nathalie
+2	Michael
+3	Michael
+4	Kristen
 \.
 
 
@@ -137,7 +141,7 @@ COPY stylists (id, name) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 1, false);
+SELECT pg_catalog.setval('stylists_id_seq', 5, true);
 
 
 --
