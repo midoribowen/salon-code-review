@@ -1,0 +1,16 @@
+<h3>$stylist.getName()</h3>
+<hr>
+
+<div class="row">
+  <div class="col-md-8">
+    <ul>
+      #foreach($client in $stylist.getClients())
+        <li>$client.getName()</li>
+      #end
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+
+  </div>
+</div>

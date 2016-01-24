@@ -58,4 +58,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Michael");
   }
 
+  @Test
+  public void viewStylistPage() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    goTo("http://localhost:4567/");
+    click("a", withText("Nathalie"));
+    assertThat(pageSource()).contains("Nathalie");
+  }
+
 }

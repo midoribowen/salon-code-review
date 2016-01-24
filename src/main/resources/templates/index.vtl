@@ -1,11 +1,10 @@
-<div>
-  <h3><u>ALL STYLISTS</u></h3>
-</div>
+<h3><u>ALL STYLISTS</u></h3>
+<hr>
 
 <div class="row">
   <div class="col-md-8">
     #foreach($stylist in $stylists)
-        <h4><a href="/stylists/$stylist.getId()">$stylist.getName()</a></h4>
+        <h4><a href="/$stylist.getId()">$stylist.getName()</a></h4>
     #end
   </div>
 

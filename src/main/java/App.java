@@ -36,6 +36,7 @@ public class App {
 
     post("/update", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
+
       String newName = request.queryParams("newName");
       Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id")));
       stylist.update(newName);
@@ -46,11 +47,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // get("/:id", (request, response) -> {
-    //   HashMap<String, Object> model = new HashMap<String, Object>();
-    //   model.put("template", "templates/stylist.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+
+      model.put("stylist", Stylist.find(Integer.parseInt(request.params(":id"))));
+
+      model.put("template", "templates/stylist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }
