@@ -32,7 +32,6 @@ public class AppTest extends FluentTest {
   @Test
   public void stylistAddedSuccessfully() {
     goTo("http://localhost:4567/");
-    click("a", withText("Add New Stylist Here!"));
     fill("#name").with("Nathalie");
     submit(".btn-success");
     assertThat(pageSource()).contains("Nathalie");
@@ -46,6 +45,17 @@ public class AppTest extends FluentTest {
     click("option", withText("Nathalie"));
     submit(".btn-danger");
     assertThat(!(pageSource()).contains("Nathalie"));
+  }
+
+  @Test
+  public void stylistUpdatedSuccessfully() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    goTo("http://localhost:4567/");
+    click("option", withText("Nathalie"));
+    fill("#newName").with("Michael");
+    submit(".btn-warning");
+    assertThat(pageSource()).contains("Michael");
   }
 
 }
