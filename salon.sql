@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: clients; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: clients; Type: TABLE; Schema: public; Owner: Midori; Tablespace: 
 --
 
 CREATE TABLE clients (
@@ -40,10 +40,10 @@ CREATE TABLE clients (
 );
 
 
-ALTER TABLE clients OWNER TO "Guest";
+ALTER TABLE clients OWNER TO "Midori";
 
 --
--- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: Midori
 --
 
 CREATE SEQUENCE clients_id_seq
@@ -54,17 +54,17 @@ CREATE SEQUENCE clients_id_seq
     CACHE 1;
 
 
-ALTER TABLE clients_id_seq OWNER TO "Guest";
+ALTER TABLE clients_id_seq OWNER TO "Midori";
 
 --
--- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Midori
 --
 
 ALTER SEQUENCE clients_id_seq OWNED BY clients.id;
 
 
 --
--- Name: stylists; Type: TABLE; Schema: public; Owner: Guest; Tablespace: 
+-- Name: stylists; Type: TABLE; Schema: public; Owner: Midori; Tablespace: 
 --
 
 CREATE TABLE stylists (
@@ -73,10 +73,10 @@ CREATE TABLE stylists (
 );
 
 
-ALTER TABLE stylists OWNER TO "Guest";
+ALTER TABLE stylists OWNER TO "Midori";
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: Midori
 --
 
 CREATE SEQUENCE stylists_id_seq
@@ -87,31 +87,31 @@ CREATE SEQUENCE stylists_id_seq
     CACHE 1;
 
 
-ALTER TABLE stylists_id_seq OWNER TO "Guest";
+ALTER TABLE stylists_id_seq OWNER TO "Midori";
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: Midori
 --
 
 ALTER SEQUENCE stylists_id_seq OWNED BY stylists.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Midori
 --
 
 ALTER TABLE ONLY clients ALTER COLUMN id SET DEFAULT nextval('clients_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: Guest
+-- Name: id; Type: DEFAULT; Schema: public; Owner: Midori
 --
 
 ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq'::regclass);
 
 
 --
--- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: Midori
 --
 
 COPY clients (id, name, stylist_id) FROM stdin;
@@ -119,33 +119,29 @@ COPY clients (id, name, stylist_id) FROM stdin;
 
 
 --
--- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Midori
 --
 
 SELECT pg_catalog.setval('clients_id_seq', 1, false);
 
 
 --
--- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: Guest
+-- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: Midori
 --
 
 COPY stylists (id, name) FROM stdin;
-1	Nathalie
-2	Michael
-3	Michael
-4	Kristen
 \.
 
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Guest
+-- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Midori
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 5, true);
+SELECT pg_catalog.setval('stylists_id_seq', 1, false);
 
 
 --
--- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: Midori; Tablespace: 
 --
 
 ALTER TABLE ONLY clients
@@ -153,7 +149,7 @@ ALTER TABLE ONLY clients
 
 
 --
--- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: Guest; Tablespace: 
+-- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: Midori; Tablespace: 
 --
 
 ALTER TABLE ONLY stylists
@@ -161,7 +157,7 @@ ALTER TABLE ONLY stylists
 
 
 --
--- Name: clients_stylist_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Guest
+-- Name: clients_stylist_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Midori
 --
 
 ALTER TABLE ONLY clients
@@ -169,12 +165,12 @@ ALTER TABLE ONLY clients
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: epicodus
+-- Name: public; Type: ACL; Schema: -; Owner: Midori
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM epicodus;
-GRANT ALL ON SCHEMA public TO epicodus;
+REVOKE ALL ON SCHEMA public FROM "Midori";
+GRANT ALL ON SCHEMA public TO "Midori";
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
