@@ -28,7 +28,7 @@ public class App {
 
     post("/delete-stylist", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id")));
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id-stylist")));
       stylist.delete();
       model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
@@ -38,8 +38,8 @@ public class App {
     post("/update-stylist", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
 
-      String newName = request.queryParams("newName");
-      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id")));
+      String newName = request.queryParams("newName-stylist");
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id-stylist")));
       stylist.update(newName);
 
       model.put("stylist", stylist);
@@ -50,8 +50,8 @@ public class App {
 
     post("/new-client", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id")));
-      Client client = new Client(request.queryParams("name"));
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id-stylist")));
+      Client client = new Client(request.queryParams("name-client"));
       client.save();
       client.assignStylist(stylist.getId());
 
@@ -63,8 +63,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/delete-client", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
 
+      Client client = Client.find(Integer.parseInt(request.queryParams("id-client")));
+      client.delete();
+      model.put("clients", Client.all());
 
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     get("/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();

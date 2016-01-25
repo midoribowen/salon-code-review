@@ -53,7 +53,7 @@ public class AppTest extends FluentTest {
     myStylist.save();
     goTo("http://localhost:4567/");
     click("option", withText("Nathalie"));
-    fill("#newName").with("Michael");
+    fill("#newName-stylist").with("Michael");
     submit(".update-stylist");
     assertThat(pageSource()).contains("Michael");
   }
@@ -67,6 +67,20 @@ public class AppTest extends FluentTest {
     myClient.assignStylist(myStylist.getId());
     goTo("http://localhost:4567/" + Integer.toString(myStylist.getId()));
     assertThat(pageSource()).contains("Gabe");
+  }
+
+  @Test
+  public void clientRemoved() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    Client myClient = new Client("Gabe");
+    myClient.save();
+    myClient.assignStylist(myStylist.getId());
+    goTo("http://localhost:4567/");
+    click("option", withText("Gabe"));
+    submit(".delete-client");
+    goTo("http://localhost:4567/" + Integer.toString(myStylist.getId()));
+    assertThat((pageSource()).contains("Nathalie"));
   }
 
 }

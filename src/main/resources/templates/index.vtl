@@ -24,8 +24,8 @@
   <div class="col-md-4">
     <h4><u>Remove A Stylist</u></h4>
     <form action="/delete-stylist" method="post">
-      <label for="id">Select a Stylist</label>
-      <select id="id" name="id" type="text">
+      <label for="id-stylist">Select a Stylist</label>
+      <select id="id-stylist" name="id-stylist" type="text">
         #foreach($stylist in $stylists)
           <option value="$stylist.getId()">$stylist.getName()</option>
         #end
@@ -38,16 +38,16 @@
   <div class="col-md-4">
     <h4><u>Update A Stylist</u></h4>
     <form action="/update-stylist" method="post">
-      <label for="id">Select a Stylist</label>
-      <select id="id" name="id" type="text">
+      <label for="id-stylist">Select a Stylist</label>
+      <select id="id-stylist" name="id-stylist" type="text">
         #foreach($stylist in $stylists)
           <option value="$stylist.getId()">$stylist.getName()</option>
         #end
       </select>
       <br>
-      <label for="newName">Update Stylist Name</label>
+      <label for="newName-stylist">Update Stylist Name</label>
       <br>
-      <input id="newName" name="newName" type="text">
+      <input id="newName-stylist" name="newName-stylist" type="text">
       <br>
       <br>
       <button type="submit" class="btn btn-warning update-stylist">Update Stylist</button>
@@ -63,10 +63,10 @@
     <form action="/new-client" method="post">
       <label for="name">Client name (First Last, e.g. John Smith)</label>
       <br>
-      <input id="name-client" name="name" type="text" required>
+      <input id="name-client" name="name-client" type="text" required>
       <br>
-      <label for="id">Select a Stylist</label>
-      <select id="id" name="id" type="text">
+      <label for="id-stylist">Select a Stylist</label>
+      <select id="id-stylist" name="id-stylist" type="text">
         #foreach($stylist in $stylists)
           <option value="$stylist.getId()">$stylist.getName()</option>
         #end
@@ -74,6 +74,21 @@
       <br>
       <br>
       <button type="submit" class="btn btn-success new-client">Submit</button>
+    </form>
+  </div>
+
+  <div class="col-md-4">
+    <h4>Remove a Client</h4>
+    <form action="/delete-client" method="post">
+      <label for="id-client">Select a Client</label>
+      <select id="id-client" name="id-client" type="text">
+        #foreach($client in $clients)
+          <option value="$client.getId()">$client.getName()</option>
+        #end
+      </select>
+      <br>
+      <br>
+      <button type="submit" class="btn btn-danger delete-client">Submit</button>
     </form>
   </div>
 </div>
