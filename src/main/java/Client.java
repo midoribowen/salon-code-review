@@ -48,7 +48,7 @@ public class Client {
 
   // ALL METHOD - puts all Clients into a List of Client Objects
   public static List<Client> all() {
-    String sql = "SELECT id AS mId, name AS mName FROM clients";
+    String sql = "SELECT id AS mId, name AS mName, stylist_id AS mStylistId FROM clients";
     try(Connection con = DB.sql2o.open()) {
       return con.createQuery(sql)
                 .executeAndFetch(Client.class);
