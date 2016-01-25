@@ -80,7 +80,21 @@ public class AppTest extends FluentTest {
     click("option", withText("Gabe"));
     submit(".delete-client");
     goTo("http://localhost:4567/" + Integer.toString(myStylist.getId()));
-    assertThat((pageSource()).contains("Nathalie"));
+    assertThat(!(pageSource()).contains("Gabe"));
+  }
+
+  @Test
+  public void clientUpdated() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    Client myClient = new Client("Gabe");
+    myClient.save();
+    myClient.assignStylist(myStylist.getId());
+    goTo("http://localhost:4567/");
+    click("option", withText("Gabe"));
+    fill("#newName-client").with("Michael");
+    submit(".update-client");
+    assertThat(pageSource()).contains("Michael");
   }
 
 }

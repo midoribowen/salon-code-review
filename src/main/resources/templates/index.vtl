@@ -91,4 +91,23 @@
       <button type="submit" class="btn btn-danger delete-client">Submit</button>
     </form>
   </div>
+
+  <div class="col-md-4">
+    <h4>Update a client</h4>
+    <form action="/update-client" method="post">
+      <label for="id-client">Select a Client</label>
+      <select id="id-client" name="id-client" type="text">
+        #foreach($client in $clients)
+          <option value="$client.getId()">$client.getName()</option>
+        #end
+      </select>
+      <br>
+      <label for="newName-client">Update Client Name</label>
+      <br>
+      <input id="newName-client" name="newName-client" type="text">
+      <br>
+      <br>
+      <button type="submit" class="btn btn-warning update-client">Update Client</button>
+    </form>
+  </div>
 </div>
