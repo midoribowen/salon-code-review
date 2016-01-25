@@ -58,16 +58,15 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Michael");
   }
 
-  // @Test
-  // public void clientAddedSuccessfully() {
-  //   Stylist myStylist = new Stylist("Nathalie");
-  //   myStylist.save();
-  //   goTo("http://localhost:4567/");
-  //   click("a", withText("Nathalie"));
-  //   fill("#name").with("Gabe");
-  //   click("option", withText("Nathalie"));
-  //   submit(".btn-success");
-  //   assertThat(pageSource()).contains("Gabe");
-  // }
+  @Test
+  public void clientAddedSuccessfully() {
+    Stylist myStylist = new Stylist("Nathalie");
+    myStylist.save();
+    Client myClient = new Client("Gabe");
+    myClient.save();
+    myClient.assignStylist(myStylist.getId());
+    goTo("http://localhost:4567/" + Integer.toString(myStylist.getId()));
+    assertThat(pageSource()).contains("Gabe");
+  }
 
 }
