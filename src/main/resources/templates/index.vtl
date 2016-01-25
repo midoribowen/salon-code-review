@@ -1,40 +1,38 @@
 <h3><u>ALL STYLISTS</u></h3>
+
+#foreach($stylist in $stylists)
+    <h4><a href="/$stylist.getId()">$stylist.getName()</a></h4>
+#end
+
 <hr>
 
 <div class="row">
-  <div class="col-md-8">
-    #foreach($stylist in $stylists)
-        <h4><a href="/$stylist.getId()">$stylist.getName()</a></h4>
-    #end
+
+  <h3>Manage Stylist List</h3>
+  <div class="col-md-4">
+    <h4><u>Add A New Stylist To Our List</u></h4>
+    <form action="/new-stylist" method="post">
+      <label for="name">Stylist name (First Last, e.g. John Smith)</label>
+      <input id="name-stylist" name="name" type="text">
+      <button type="submit" class="btn btn-success new-stylist">Submit</button>
+    </form>
   </div>
 
   <div class="col-md-4">
-    <h3><u>Add A New Stylist To Our List</u></h3>
-    <form action="/new" method="post">
-      <label for="name">Stylist name (First Last, e.g. John Smith)</label>
-      <input id="name" name="name" type="text">
-      <button type="submit" class="btn btn-success">Submit</button>
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h3><u>Remove A Stylist From Our List</u></h3>
-    <form action="/delete" method="post">
+    <h4><u>Remove A Stylist From Our List</u></h4>
+    <form action="/delete-stylist" method="post">
       <label for="id">Stylist name</label>
       <select id="id" name="id" type="text">
         #foreach($stylist in $stylists)
           <option value="$stylist.getId()">$stylist.getName()</option>
         #end
       </select>
-      <button type="submit" class="btn btn-danger">Submit</button>
+      <button type="submit" class="btn btn-danger delete-stylist">Submit</button>
     </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h3><u>Update A Stylist From Our List</u></h3>
-    <form action="/update" method="post">
+  </div>
+  <div class="col-md-4">
+    <h4><u>Update A Stylist From Our List</u></h4>
+    <form action="/update-stylist" method="post">
       <label for="id">Select a Stylist</label>
       <select id="id" name="id" type="text">
         #foreach($stylist in $stylists)
@@ -44,7 +42,25 @@
       <label for="newName">Update Stylist Name</label>
       <input id="newName" name="newName" type="text">
 
-      <button type="submit" class="btn btn-warning">Update Stylist</button>
+      <button type="submit" class="btn btn-warning update-stylist">Update Stylist</button>
+    </form>
+  </div>
+
+</div>
+
+<div class="row">
+  <h3>Manage Client List</h3>
+  <div class="col-md-4">
+    <form action="/new-client" method="post">
+      <label for="name">Client name (First Last, e.g. John Smith)</label>
+      <input id="name" name="name" type="text" required>
+      <label for="id">Select a Stylist</label>
+      <select id="id" name="id" type="text">
+        #foreach($stylist in $stylists)
+          <option value="$stylist.getId()">$stylist.getName()</option>
+        #end
+      </select>
+      <button type="submit" class="btn">Submit</button>
     </form>
   </div>
 </div>

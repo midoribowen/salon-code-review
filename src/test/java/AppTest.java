@@ -32,8 +32,8 @@ public class AppTest extends FluentTest {
   @Test
   public void stylistAddedSuccessfully() {
     goTo("http://localhost:4567/");
-    fill("#name").with("Nathalie");
-    submit(".btn-success");
+    fill("#name-stylist").with("Nathalie");
+    submit(".new-stylist");
     assertThat(pageSource()).contains("Nathalie");
   }
 
@@ -43,7 +43,7 @@ public class AppTest extends FluentTest {
     myStylist.save();
     goTo("http://localhost:4567/");
     click("option", withText("Nathalie"));
-    submit(".btn-danger");
+    submit(".delete-stylist");
     assertThat(!(pageSource()).contains("Nathalie"));
   }
 
@@ -54,17 +54,20 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/");
     click("option", withText("Nathalie"));
     fill("#newName").with("Michael");
-    submit(".btn-warning");
+    submit(".update-stylist");
     assertThat(pageSource()).contains("Michael");
   }
 
-  @Test
-  public void viewStylistPage() {
-    Stylist myStylist = new Stylist("Nathalie");
-    myStylist.save();
-    goTo("http://localhost:4567/");
-    click("a", withText("Nathalie"));
-    assertThat(pageSource()).contains("Nathalie");
-  }
+  // @Test
+  // public void clientAddedSuccessfully() {
+  //   Stylist myStylist = new Stylist("Nathalie");
+  //   myStylist.save();
+  //   goTo("http://localhost:4567/");
+  //   click("a", withText("Nathalie"));
+  //   fill("#name").with("Gabe");
+  //   click("option", withText("Nathalie"));
+  //   submit(".btn-success");
+  //   assertThat(pageSource()).contains("Gabe");
+  // }
 
 }
