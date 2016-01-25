@@ -1,34 +1,35 @@
-# _{Application Name}_
+# Get A Haircut! Salon Manager
 
-#### _{Brief description of application}, {Date of current version}_
+#### A Database Management App for Hair Salons, January 24th, 2016
 
-#### By _**{List of contributors}**_
+#### By Midori Bowen
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+Get A Haircut! Salon Manager is a Java application that allows a user to input stylists and clients into a salon database in order to manage the salon's lists of stylists and clients. Each client is assigned to one stylist, but a stylist can have many clients.
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* Install Java, PostgreSQL, and Gradle
+* Clone this repository
+* Navigate to your terminal and open Postgres by entering `postgres` in your command line
+* Open another terminal window and enter the command `psql` and create a database by entering `CREATE DATABASE salon;` in your command line. Enter `\c salon` to open this database.
+* Open yet another terminal window, navigate to your project directory and enter the command `psql salon < salon.sql`. This will create the tables you need to get this database running.
+* In order to test, in the terminal window where you are tracking your database, enter `CREATE DATABASE salon_test WITH TEMPLATE salon;` before each time you test. You may need to periodically enter `DROP DATABASE salon_test;` in order to clear data from your test database. After you delete this test database, you can always create it again, using the same `CREATE DATABASE` command listed above.
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+* To run this program in your browser, navigate to your salon directory, enter `gradle run` in your command line, and go to http://localhost:4567/ in your browser.
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+Currently there is a bug that does not allow the user to create new clients under a stylist's page. Although this functionality is passing integration tests, there is a problem with being able to access the entire list of stylists, causing an error when the user tries to enter a new client. The error is a NumberFormatException: null.
 
 ## Support and contact details
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+https://github.com/midoribowen
 
 ## Technologies Used
 
-_{Tell me about the languages and tools you used to create this app. Assume that I know you probably used HTML and CSS. If you did something really cool using only HTML, point that out.}_
+Java, Spark, JUnit, Fluentlenium, Velocity, PostgreSQL, Bootstrap
 
 ### License
 
@@ -38,5 +39,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-Copyright (c) 2015 **_{List of contributors or company name}_**
-
+Copyright (c) 2016 Midori BOwen
