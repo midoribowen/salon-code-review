@@ -9,13 +9,14 @@
       #end
     </ul>
   </div>
+</div>
 
   <div class="row">
 
     <h3>Manage Client List</h3>
     <div class="col-md-4">
       <h4><u>Add a New Client</u></h4>
-      <form action="$stylist.getId()/new-client" method="post">
+      <form action="/$stylist.getId()/new-client" method="post">
         <label for="name">Client name (First Last, e.g. John Smith)</label>
         <br>
         <input id="name-client" name="name-client" type="text" required>
@@ -34,7 +35,7 @@
 
     <div class="col-md-4">
       <h4>Remove a Client</h4>
-      <form action="$stylist.getId()/delete-client" method="post">
+      <form action="/$stylist.getId()/delete-client" method="post">
         <label for="id-client">Select a Client</label>
         <select id="id-client" name="id-client" type="text">
           #foreach($client in $stylist.getClients())
@@ -49,7 +50,7 @@
 
     <div class="col-md-4">
       <h4>Update a client</h4>
-      <form action="$stylist.getId()/update-client" method="post">
+      <form action="/$stylist.getId()/update-client" method="post">
         <label for="id-client">Select a Client</label>
         <select id="id-client" name="id-client" type="text">
           #foreach($client in $stylist.getClients())
@@ -67,6 +68,3 @@
     </div>
 
   </div>
-
-
-</div>
