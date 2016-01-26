@@ -137,7 +137,7 @@ COPY stylists (id, name) FROM stdin;
 -- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Midori
 --
 
-SELECT pg_catalog.setval('stylists_id_seq', 15, true);
+SELECT pg_catalog.setval('stylists_id_seq', 16, true);
 
 
 --
@@ -154,14 +154,6 @@ ALTER TABLE ONLY clients
 
 ALTER TABLE ONLY stylists
     ADD CONSTRAINT stylists_pkey PRIMARY KEY (id);
-
-
---
--- Name: clients_stylist_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: Midori
---
-
-ALTER TABLE ONLY clients
-    ADD CONSTRAINT clients_stylist_id_fkey FOREIGN KEY (stylist_id) REFERENCES stylists(id);
 
 
 --
