@@ -62,7 +62,7 @@ public class App {
 
     post("/:id/new-client", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id-stylist")));
+      Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id-stylist")));
       Client client = new Client(request.queryParams("name-client"));
       client.save();
       client.assignStylist(stylist.getId());
@@ -96,6 +96,7 @@ public class App {
       client.update(newName);
 
       model.put("client", client);
+      model.put("stylist", stylist);
       model.put("stylists", Stylist.all());
       model.put("client", stylist.getClients());
       model.put("template", "templates/stylist.vtl");
