@@ -21,6 +21,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = new Stylist(request.queryParams("name-stylist"));
       stylist.save();
+      model.put("stylist", stylist);
       model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
@@ -30,6 +31,7 @@ public class App {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.queryParams("id-stylist")));
       stylist.delete();
+      model.put("stylist", stylist);
       model.put("stylists", Stylist.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
@@ -81,6 +83,7 @@ public class App {
       Client client = Client.find(Integer.parseInt(request.queryParams("id-client")));
       client.delete();
 
+      model.put("stylist", stylist);
       model.put("stylists", Stylist.all());
       model.put("client", stylist.getClients());
       model.put("template", "templates/stylist.vtl");
