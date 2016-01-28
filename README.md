@@ -1,6 +1,6 @@
 # Get A Haircut! Salon Manager
 
-#### A Database Management App for Hair Salons, January 24th, 2016
+#### A Database Management App for Hair Salons, January 27th, 2016
 
 #### By Midori Bowen
 
@@ -21,7 +21,7 @@ Get A Haircut! Salon Manager is a Java application that allows a user to input s
 
 ## Known Bugs
 
-Currently there is a bug that does not allow the user to create new clients under a stylist's page. Although this functionality is passing integration tests, there is a problem with being able to access the entire list of stylists, causing an error when the user tries to enter a new client. The error is a NumberFormatException: null.
+* When a stylist is deleted from the database, but has a client in their list, the client instance is not deleted from the database.
 
 ## Support and contact details
 
