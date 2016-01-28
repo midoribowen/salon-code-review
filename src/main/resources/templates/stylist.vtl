@@ -13,9 +13,9 @@
 
   <div class="row">
 
-    <h3>Manage Client List</h3>
+    <h4>Manage Client List</h4>
     <div class="col-md-4">
-      <h4><u>Add a New Client</u></h4>
+      <h5><u>Add a New Client</u></h5>
       <form action="/$stylist.getId()/new-client" method="post">
         <label for="name">Client name (First Last, e.g. John Smith)</label>
         <br>
@@ -23,9 +23,7 @@
         <br>
         <label for="id-stylist">Select a Stylist</label>
         <select id="id-stylist" name="id-stylist" type="text">
-          #foreach($stylist in $stylists)
             <option value="$stylist.getId()">$stylist.getName()</option>
-          #end
         </select>
         <br>
         <br>
@@ -34,7 +32,7 @@
     </div>
 
     <div class="col-md-4">
-      <h4>Remove a Client</h4>
+      <h5>Remove a Client</h5>
       <form action="/$stylist.getId()/delete-client" method="post">
         <label for="id-client">Select a Client</label>
         <select id="id-client" name="id-client" type="text">
@@ -49,7 +47,7 @@
     </div>
 
     <div class="col-md-4">
-      <h4>Update a client</h4>
+      <h5>Update a client</h5>
       <form action="/$stylist.getId()/update-client" method="post">
         <label for="id-client">Select a Client</label>
         <select id="id-client" name="id-client" type="text">
