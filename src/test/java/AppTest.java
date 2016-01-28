@@ -60,12 +60,13 @@ public class AppTest extends FluentTest {
 
   @Test
   public void clientAddedSuccessfully() {
-    Stylist myStylist = new Stylist("Nathalie");
-    myStylist.save();
-    Client myClient = new Client("Gabe");
-    myClient.save();
-    myClient.assignStylist(myStylist.getId());
-    goTo("http://localhost:4567/" + Integer.toString(myStylist.getId()));
+    goTo("http://localhost:4567/");
+    fill("#name-stylist").with("Nathalie");
+    submit(".new-stylist");
+    click("a", withText("Nathalie"));
+    fill("#name-client").with("Gabe");
+    click("option", withText("Nathalie"));
+    submit(".new-client");
     assertThat(pageSource()).contains("Gabe");
   }
 
